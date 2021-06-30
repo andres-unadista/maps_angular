@@ -1,2 +1,8 @@
-<button class="delete" (click)="deleteMarkersMap()">Eliminar marcadores</button>
+<div class="row">
+  <button class="delete" (click)="deleteMarkersMap()">Eliminar marcadores</button>
+  <button class="calculate" (click)="calculateRoute()">Calcular ruta</button>
+  <div class="col-input">
+    <input type="text" id="inputPlaces" placeholder="Lugar...">
+  </div>
+</div>
 <div class="map" #divMap></div>

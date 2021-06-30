@@ -1,1 +1,13 @@
-<p>map works!</p>
+<div class="container">
+  <agm-map [latitude]="lat" [longitude]="long" [zoom]="19" [fitBounds]="true" *ngIf="lat && long && countries.length > 0">
+    <agm-marker [latitude]="lat" [longitude]="long" [markerDraggable]="true"></agm-marker>
+    <agm-marker *ngFor="let country of countries" [latitude]="country.latlng[0]" [longitude]="country.latlng[1]" [iconUrl]="{url: country.flag, scaledSize: {width: 20, height: 15}}" [agmFitBounds]="true">
+      <agm-info-window>
+        <h3>
+          {{country.translations.es}}
+        </h3>
+        <button>Más información</button>
+      </agm-info-window>
+    </agm-marker>
+  </agm-map>
+</div>

@@ -1,0 +1,11 @@
+.container{
+  max-width: 99vw;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  agm-map{
+    width: 90vw;
+    height: 90vh;
+    margin: auto;
+  }
+}

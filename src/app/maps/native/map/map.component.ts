@@ -28,6 +28,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         this.loadMap(position);
+        this.eventAutocompleteInput();
       });
     } else {
       alert('Navegador no compatible ☢');
@@ -97,5 +98,30 @@ export class MapComponent implements OnInit, AfterViewInit {
     for (const marker of this.markers) {
       marker.setMap(null);
     }
+  }
+
+  eventAutocompleteInput() {
+    const autocomplete = new google.maps.places.Autocomplete(
+      document.getElementById('inputPlaces') as HTMLInputElement
+    );
+    google.maps.event.addListener(autocomplete, 'place_changed', (event) => {
+      const place = autocomplete.getPlace();
+      console.log(place);
+      this.map.setCenter(place.geometry.location);
+    });
+  }
+
+  calculateRoute() {
+    const directionService = new google.maps.DirectionsService();
+    const directionsRenderer = new google.maps.DirectionsRenderer();
+
+    directionsRenderer.setMap(this.map);
+    directionService.route({
+      origin: 'Madrid, españa',
+      destination: 'Valencia, españa',
+      travelMode: google.maps.TravelMode.DRIVING
+    }, result => {
+      console.log(result);
+    })
   }
 }
