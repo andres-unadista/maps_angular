@@ -14,7 +14,7 @@ import { AgmCoreModule } from '@agm/core';
     CommonModule,
     LibraryRoutingModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDoyKR6fCKY_SXsFvKEPf-qljmLNH4qi8c'
+      apiKey: 'API_KEY_HERE'
     })
   ]
 })
